@@ -1,0 +1,31 @@
+package com.service;
+
+import com.commons.entity.Detalles;
+
+public class DetallesService implements IDetallesService {
+
+	@Override
+	public Detalles save(Detalles detalles) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Detalles update(Detalles detalles) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(Long id) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public Detalles findById(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

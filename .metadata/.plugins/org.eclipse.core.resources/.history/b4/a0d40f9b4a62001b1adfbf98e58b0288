@@ -1,0 +1,8 @@
+package com.detalles.client;
+
+import org.springframework.cloud.openfeign.FeignClient;
+
+@FeignClient (name = "servicio-ticket")
+public interface InvetarioClient {
+
+}

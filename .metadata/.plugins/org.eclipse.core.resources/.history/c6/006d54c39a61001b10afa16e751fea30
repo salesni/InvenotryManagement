@@ -1,0 +1,48 @@
+package com.ticket.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.commons.entity.Ticket;
+import com.ticket.client.TicketClient;
+
+@Service("ServiceFeign")
+public class TicketLogicService implements ITicketsLogicService{
+	
+	@Autowired
+	private TicketClient clienteFeign;
+	
+	@Override
+	public Ticket save(Ticket ticket) {
+		TicketLogic ticketL = new TicketLogic(ticket);
+		return ;
+	}
+
+	@Override
+	public Ticket update(Ticket ticket) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Optional<Ticket> findById(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Ticket> findByUsername(String usuario) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

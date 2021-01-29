@@ -1,0 +1,22 @@
+package com.ticket.model;
+
+import com.commons.entity.Ticket;
+
+public class TicketLogic {
+	final double  tax=0.15;
+	private Ticket ticket;
+	
+	TicketLogic(Ticket ticket){
+		this.ticket=ticket;
+	}
+	
+	public void calcAll(){
+		
+	}
+	public void calcTotal() {
+		double subtotal = this.ticket.getSubtotal();
+		this.ticket.setTotal(subtotal*this.tax);
+	}
+	
+
+}

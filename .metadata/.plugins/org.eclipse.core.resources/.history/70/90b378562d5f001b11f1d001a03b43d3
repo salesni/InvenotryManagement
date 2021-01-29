@@ -1,0 +1,5 @@
+package com.usuarios.service;
+
+public interface IUserService {
+
+}

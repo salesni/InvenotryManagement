@@ -1,0 +1,11 @@
+package com.ticket.service;
+
+import java.util.Optional;
+
+
+
+import com.commons.entity.Detalles;
+
+public interface IDetallesService {
+	public Optional<Detalles> findById( Long id);
+}

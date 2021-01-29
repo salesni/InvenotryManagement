@@ -1,0 +1,56 @@
+package com.detalles.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.commons.entity.Detalles;
+import com.commons.entity.Usuario;
+import com.detalles.repository.DetallesRepository;
+
+@Service("ServiceFeign")
+public class DetallesService implements IDetallesService {
+	
+	@Autowired
+	private DetallesRepository repo;
+	
+	@Autowired
+	private InventarioClient clienteFeign;
+	
+
+	@Override
+	public Detalles save(Detalles detalles) {
+		Detalles temp = repo.save(detalles);
+		Usuario tempUser = temp.getUsuario();
+		temp.setUsuario(tempUser);
+		return temp;
+	}
+
+	@Override
+	public Detalles updateInventario(Detalles detalles) {
+		Optional<Detalles> temp = repo.findById(detalles.getId());
+		temp.get().setCantidad(detalles.getCantidad());;
+		repo.save(temp.get());
+		Detalles temp2 = repo.save(detalles);
+		Usuario tempUser = temp2.getUsuario();
+		temp2.setUsuario(tempUser);
+		return temp2;
+	}
+
+	@Override
+	public void delete(Long id) {
+		repo.deleteById(id);
+
+	}
+
+	@Override
+	public Optional<Detalles> findById(long id){
+		Optional<Detalles> temp = repo.findById(id);
+		Usuario tempUser = temp.get().getUsuario();
+		tempUser.setPassword("");
+		temp.get().setUsuario(tempUser);
+		return temp;
+	}
+
+}

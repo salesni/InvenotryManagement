@@ -1,0 +1,41 @@
+package com.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.commons.entity.Detalles;
+import com.commons.entity.Usuario;
+import com.repository.DetallesRepository;
+
+
+public class DetallesService implements IDetallesService {
+	
+	@Autowired
+	private DetallesRepository repo;
+
+	@Override
+	public Detalles save(Detalles detalles) {
+		Detalles temp = repo.save(detalles);
+		Usuario tempUser = temp.getUsuario();
+		temp.setUsuario(tempUser);
+		return temp;
+	}
+
+	@Override
+	public Detalles update(Detalles detalles) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(Long id) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public Detalles findById(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

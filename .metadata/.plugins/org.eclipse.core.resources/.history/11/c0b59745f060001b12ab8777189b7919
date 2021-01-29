@@ -1,0 +1,40 @@
+package com.inventario.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.commons.entity.Inventario;
+import com.inventario.repository.InventarioRepository;
+
+public class InventarioService implements IInventarioService {
+	
+	@Autowired
+	private InventarioRepository repo;
+	
+	@Override
+	public Inventario save(Inventario Inventario) {
+		return repo.save(Inventario);
+	}
+
+	@Override
+	public Inventario updateInventario(Inventario Inventario) {
+		Optional<Inventario> temp = repo.findById(Inventario.getId());
+		temp.get().setExistencia(Inventario.getExistencia());
+		
+		return temp.get();
+	}
+
+	@Override
+	public void delete(Long id) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public Optional<Inventario> findById(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

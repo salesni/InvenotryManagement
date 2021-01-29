@@ -1,0 +1,18 @@
+package com.ticket;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@EnableCircuitBreaker
+@EnableEurekaClient
+@EnableFeignClients
+@SpringBootApplication
+@EntityScan({"com.deloitte.app.op.operations.table"})
+@EnableAutoConfiguration(exclude= {DataSourceAutoConfiguration.class})
+public class TicketLogicServiceApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(TicketLogicServiceApplication.class, args);
+	}
+
+}

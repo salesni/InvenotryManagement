@@ -1,0 +1,17 @@
+package com.ticket.client;
+
+import java.util.Optional;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+import com.commons.entity.Detalles;
+@FeignClient (name = "servicio-ticket")
+public class DetallesClient {
+	@GetMapping("/findById/{id}")
+	public Optional<Detalles> crear(@PathVariable (name = "id") Long id);
+
+}

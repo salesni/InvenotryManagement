@@ -1,0 +1,22 @@
+package com.ticket.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.commons.entity.Detalles;
+import com.ticket.client.DetalleClient;
+
+
+@Service("ServiceFeign2")
+public class DetallesService implements IDetallesService {
+	
+	@Autowired
+	private DetalleClient clienteFeign;
+	@Override
+	public Optional<Detalles> findById(Long id) {
+		return null;
+	}
+
+}

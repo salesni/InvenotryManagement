@@ -1,0 +1,10 @@
+package com.repository;
+
+import org.springframework.data.repository.PagingAndSortingRepository;
+
+import com.commons.entity.Detalles;
+
+public interface DetallesRepository extends PagingAndSortingRepository<Detalles, Long> {
+
+	
+}

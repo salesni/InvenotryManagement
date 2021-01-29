@@ -1,0 +1,48 @@
+package com.ticket.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.commons.entity.Detalles;
+import com.commons.entity.Ticket;
+import com.ticket.repository.TicketRepository;
+
+
+public class TicketService implements ITicketService {
+	
+	@Autowired
+	private TicketRepository repo;
+
+	@Override
+	public Ticket save(Ticket ticket) {
+		Ticket temp = repo.save(ticket);
+		List <Detalles> detalles = temp.getDetalles();
+		for(Detalles detalle: detalles) {
+			detalle.getUsuario().setPassword("");
+		}
+		temp.setDetalles(detalles);
+		
+		return temp;
+	}
+
+
+	@Override
+	public void delete(Long id) {
+		repo.deleteById(id);
+
+	}
+
+	@Override
+	public Optional<Ticket> findById(long id) {
+		Ticket temp = repo.findById(id).get();
+		List <Detalles> detalles = temp.getDetalles();
+		for(Detalles detalle: detalles) {
+			detalle.getUsuario().setPassword("");
+		}
+		temp.setDetalles(detalles);
+		return temp;
+	}
+
+}

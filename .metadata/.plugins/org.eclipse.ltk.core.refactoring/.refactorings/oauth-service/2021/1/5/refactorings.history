@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;clients&apos; to &apos;com.oauth.clients&apos;&#x0A;- Original project: &apos;oauth-service&apos;&#x0A;- Original element: &apos;oauth-service/src/main/java/clients&apos;&#x0A;- Renamed element: &apos;oauth-service/src/main/java/com.oauth.clients&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;clients&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;clients" name="com.oauth.clients" qualified="false" references="true" stamp="1611599139764" textual="false" version="1.0"/>
+</session>

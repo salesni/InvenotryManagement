@@ -1,0 +1,17 @@
+package com.ticket.client;
+
+import java.util.Optional;
+
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+
+import com.commons.entity.Detalles;
+
+public interface DetalleClient {
+	
+	@GetMapping("/findById/{id}")
+	public Optional<Detalles> crear(@PathVariable (name = "id") Long id);
+
+}

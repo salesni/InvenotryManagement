@@ -1,0 +1,16 @@
+package com.inventario.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.web.bind.annotation.RestController;
+
+
+@RefreshScope
+@RestController
+public class InventarioController {
+	@Autowired
+	@Qualifier("ServiceFeign")
+	private IInventarioService service;
+
+}

@@ -1,0 +1,10 @@
+package com.service;
+
+import com.commons.entity.Detalles;
+
+public interface IDetallesService {
+	public Detalles save(Detalles detalles);
+	public Detalles update(Detalles detalles);
+	public void delete(Long id);
+	public Detalles findById(long id);
+}

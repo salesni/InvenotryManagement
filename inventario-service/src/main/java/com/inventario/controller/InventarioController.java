@@ -1,0 +1,54 @@
+package com.inventario.controller;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.commons.entity.Inventario;
+import com.inventario.service.IInventarioService;
+
+
+@RefreshScope
+@RestController
+public class InventarioController {
+	@Autowired
+	@Qualifier("ServiceFeign")
+	private IInventarioService service;
+	
+	@GetMapping("/findById/{id}")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Optional<Inventario> findById(@PathVariable (name = "id") Long id) {
+		return service.findById(id);
+	}
+	
+	@PostMapping("/newInventario")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Inventario newDetalle(@RequestBody Inventario  inventario) {
+		return service.save(inventario);
+	}
+	
+	@PutMapping("/updateInventario")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Inventario updateDetalle(@RequestBody Inventario  inventario) {
+		return service.updateInventario(inventario);
+	}
+	
+	@DeleteMapping("/deleteInventario/{id}")
+	@ResponseStatus(HttpStatus.CREATED)
+	public void deleteDetalle(@PathVariable (name = "id") Long id) {
+		service.delete(id);
+	}
+
+
+}

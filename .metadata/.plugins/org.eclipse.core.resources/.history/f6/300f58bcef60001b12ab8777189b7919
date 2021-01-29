@@ -1,0 +1,33 @@
+package com.inventario.service;
+
+import java.util.Optional;
+
+import com.commons.entity.Inventario;
+
+public class InventarioService implements IInventarioService {
+
+	@Override
+	public Inventario save(Inventario Inventario) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Inventario updateInventario(Inventario Inventario) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(Long id) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public Optional<Inventario> findById(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

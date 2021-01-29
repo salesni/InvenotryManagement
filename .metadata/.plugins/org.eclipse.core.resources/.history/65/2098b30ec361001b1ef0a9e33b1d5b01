@@ -1,0 +1,65 @@
+package com.ticket.model;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.commons.entity.Detalles;
+import com.commons.entity.Ticket;
+import com.ticket.client.DetallesClient;
+
+
+
+
+
+public class TicketLogic {
+	final Double  tax=0.15;
+	private Ticket ticket;
+	
+	@Autowired
+	private DetallesClient client;
+	
+
+	
+	public TicketLogic(Ticket ticket){
+		this.ticket=ticket;
+	}
+	
+	public void calcAll(){
+		this.ticket.setImpuesto(tax);
+		calcSubTotal();
+		calcTotal();
+		
+	}
+	
+	public void calcTotal() {
+		Double subtotal = this.ticket.getSubtotal();
+		this.ticket.setTotal(subtotal*(1.0+this.tax));
+	}
+	
+	public void calcSubTotal() {
+		List<Detalles> detalles = this.ticket.getDetalles();
+		
+		Double total=0.0;
+		for(Detalles detalle : detalles) {
+			Detalle detalloso = client.findById(detalle.getId()).get();
+			total+=detalloso.getCantidad() *detalloso.getInventario().getPrecio();
+		}
+		this.ticket.setSubtotal(total);
+		
+	}
+
+	public Ticket getTicket() {
+		return ticket;
+	}
+
+	public void setTicket(Ticket ticket) {
+		this.ticket = ticket;
+	}
+	
+	
+	
+	
+	
+
+}
